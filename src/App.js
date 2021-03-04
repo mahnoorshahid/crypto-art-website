@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/nav';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App maxWidth">
+    <NavBar/>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <h1>
+        The New Art Space with a Sustainable Future
+      </h1>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,6 +21,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <section>
+        <h1>how it works</h1>
+      </section>
     </div>
   );
 }
