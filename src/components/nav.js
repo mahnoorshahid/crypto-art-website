@@ -3,11 +3,17 @@ import React, { Component } from 'react';
 class NavBar extends Component {
     state = {  }
     render() { 
-        return ( <div>
+        return ( <div className="topnav">
+            <div id="logo">
 
-            <h1>navbar</h1>
-
-        </div> );
+            </div>
+        <div className="contentLinks">
+        <a className="active" href="#home">Marketplace</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        </div>
+      </div>);
     }
 }
  
