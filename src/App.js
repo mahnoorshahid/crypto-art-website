@@ -8,18 +8,31 @@ function App() {
     <NavBar/>
       <header className="App-header">
       <h1 className="header">
-        The New Art Space with a Sustainable Future
+        <span>
+        The New Art Space {' '}  
+        </span>
+        <span>
+        with a {' '}  
+        </span>
+        <span>
+         Sustainable Future {' '}  
+        </span>
       </h1>
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
         <a
-          className="App-link"
+          className="button"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          Learn React
+        > 
+          <div className="buttonText">
+          Learn More
+          </div>
+          <span className="arrow">
+          &rarr;
+          </span>
         </a>
       </header>
       <h1>how it works</h1>

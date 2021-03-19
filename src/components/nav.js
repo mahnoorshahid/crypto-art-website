@@ -9,9 +9,8 @@ class NavBar extends Component {
             </div>
         <div className="contentLinks">
         <a className="active" href="#home">Marketplace</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a href="#news">About</a>
+        <a href="#contact">Offset</a>
         </div>
       </div>);
     }

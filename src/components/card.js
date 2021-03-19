@@ -6,75 +6,45 @@ import styles from "../styles/card.css"
 export default class Card extends Component {
     render() {
         return (
+          <div>
             <div className="eventCard">
-            <div className="eventPart eventPartHalf">
+            <div className="eventPart noBorder">
               {/* <img className={styles.ctaIcon} src={calender} /> */}
-              <h3 className="eventTitle">Jewish Center</h3>
+              <h3 className="eventTitle">NFT nMW</h3>
               <div className="detailContainer">
-                <div className="detailItem location">
-                  {/* <img className={styles.locationIcon} src={location} /> */}
-                  <a
-                    href={''}
-                    className="smallFont"
-                  >
-                    131 W 86th St
-                  </a>
-                </div>
+           
                 <div className="detailItem location">
                   {/* <img className={styles.locationIcon} src={daysIcon} /> */}
                   <p>
                     <p>
-                      <b>Tuesdays 5:30-7pm</b>
+                      <b>7 Eth</b>
                       <br />
-                      April 13 - May 18, 2021
-                      <br /> 12-16 year olds <br /> $300
+                      Created Mar 7th
+                      <br /> @creatornaem <br />
+                    </p>
+                  </p>
+                </div>
+  
+                {/* <div className={(styles.detailItem, styles.date)}></div> */}
+              </div>
+            </div>
+            </div>
+            <div className="eventCard bottom">
+            <div className="detailItem location">
+                  {/* <img className={styles.locationIcon} src={daysIcon} /> */}
+                  <h3 className="eventTitle">NFT Name</h3>
+                  <p>
+                    <p>
+                       @creatornaem <br />
                     </p>
                   </p>
                 </div>
                 <div className="detailItem location">
-                  {/* <img className={styles.locationIcon} src={daysIcon} /> */}
-                  <div>
-                    <p>
-                      <b>Wednesdays 5:30-7pm Advanced</b>
+                <b>7 Eth</b>
                       <br />
-                    </p>
-                    <p>
-                      April 14 - May 19, 2021
+                      Created Mar 7th
                       <br />
-                      Advanced 12-16 year olds <br /> $300
-                    </p>
-                  </div>
-                </div>
-                <div className="detailItem location">
-                  {/* <img className={styles.locationIcon} src={daysIcon} /> */}
-                  <div>
-                    <p>
-                      <b>Sundays 2-4pm</b>
-                      <br />
-                    </p>
-                    <p>
-                      April 11 - May 23, 2021
-                      <br />
-                      Advanced 12-16 year olds <br /> $325
-                    </p>
-                  </div>
-                </div>
-                <div className="detailItem location">
-                  {/* <img className={styles.locationIcon} src={daysIcon} /> */}
-                  <div>
-                    <p>
-                      <b>Sundays 4 - 6pm</b>
-                      <br />
-                    </p>
-                    <p>
-                      April 11 - May 23, 2021
-                      <br />
-                      12-16 year olds <br /> $325
-                    </p>
-                  </div>
-                </div>
-                {/* <div className={(styles.detailItem, styles.date)}></div> */}
-              </div>
+                 </div>
             </div>
             </div>
         )
