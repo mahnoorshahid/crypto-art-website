@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class NavBar extends Component {
     state = {  }
     render() { 
-        return ( <div className="topnav">
+        return ( <div className="topnav maxWidth">
             <div id="logo">
 
             </div>
