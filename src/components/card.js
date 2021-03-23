@@ -9,16 +9,33 @@ import styles from "../styles/card.css"
      
 
 
-const Card = (props) => {
-  
+const Card = ({img, assets, name, price, first}) => {
+  // {img, assets, name, price} = props;
     // render() {
         return (
 
           <div className=" eventCardContainer">
             <div className="eventCardShadow">
             <div className="eventPart">
-              <img src = {props.img}/>
-              
+              <img src = {img}/>
+              {/* {assets && assets.bundles && assets.bundles.length > 0 && assets.bundles.map((item)=>{
+                console.log("in map", item);
+                return <li  className="eventCard" key={item.id}>
+                    <h1>hellp</h1>
+                    {item.assets.map((index) =>{
+                        return <img src={index.image_preview_url}></img>
+                    })}
+                    <img src={item.image_original_url}></img>
+
+                    <img src={img}></img>
+                    <div>
+                        <h4>
+                            {item.id}
+                        </h4>
+                        <a href = {item.asset_contract}>profile</a>
+                    </div>
+                </li>
+         })} */}
             <div className="detailContainer">
               {/* <h3 className="eventTitle">NFT nMW</h3>
                 <div className="detailItem location">
@@ -38,7 +55,7 @@ const Card = (props) => {
               <div className="flexContainer">
             <div className="detailItem">
                   {/* <img className={styles.locationIcon} src={daysIcon} /> */}
-                  <p className="eventTitle">NFT Name {props.name}</p>
+                  <p className="eventTitle">NFT Name {name}</p>
                 
                     <p className="smallText">
                        @creatornaem <br />

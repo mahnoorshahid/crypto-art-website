@@ -27,53 +27,64 @@ const first = {
 
 
 
-const CardRow = (props) => {
+const CardRow = () => {
     // render() {
         const [assets, setAssets] = useState([]);
 
         const getAssets = async() => {
-            const response = await fetch(url);
-            const assets = await response.json();
-            // setAssets(assets)
-            //setAssets(assets)
-            console.log("bundle", assets);
-          const base = assets.bundles[3].assets[0];
-          console.log("base", base);
-
+         const response = await fetch(url);
+         const assets = await response.json();
+          console.log("bundle", assets);
+         // const base = assets.bundles.assets[0];
+          //console.log("base", base);
+          setAssets(assets);
         };
-      
+
         useEffect(() => {
            getAssets();
         }, []);
-        console.log("Assets", assets);
-        
+
+       
         return (
-        <div>      
+        // {/* <>       */}
         <div className="cardRowContainer">
             <div className="cardRowContainer">
-            {assets.map((item)=>{
-                const {id, asset_contract, image_original_url, image_thumbnail_url} = item;
-                return <li  className="eventCard" key={id}>
-                    <h1>hellp</h1>
-                    <img src={image_thumbnail_url} alt={id}>
-                    </img>
-                    <div>
+            <h1>hello</h1>
+            {/* assets={assets} */}
+            {/* <Card img={first.img} name = {first.nftName}  price ={first.price} dollarValue={first.dollarValue} owner = {first.owner} assets={assets}/> */}
+            {/* <Card/> */}
+            {/* <Card/> */}
+            </div>
+           
+
+         {assets && assets.bundles && assets.bundles.length > 0 && assets.bundles.map((item)=>{
+                console.log("in map", item);
+                {/* const {id, asset_contract, image_original_url, image_thumbnail_url} = item; */}
+                return <li  className="eventCard" key={item.id}>
+                    <h1>hellp {item.description}</h1>
+                    {item && item.assets.length > 0 && item.assets.map((index) =>{
+                        console.log("index", index);
+                     return (
+                        <div>
+                   
+                        {/* <img src={index.image_preview_url}></img> */}
+                        <Card img = {index.image_preview_url}/>
+                        </div>
+                        )
+                    })}
+                    {/* <img src={item.assets.image_original_url}></img> */}
+
+                    {/* <img src={first.img}></img> */}
+                    {/* <div>
                         <h4>
-                            {id}
+                            {item.id}
                         </h4>
-                        <a href = {asset_contract}>profile</a>
-                    </div>
+                        <a href = {item.asset_contract}>profile</a>
+                    </div> */}
                 </li>
-            })}
-
-             <h1>hello</h1>
-
-          <Card img = {first.img} name = {first.nftName} price ={first.price} dollarValue={first.dollarValue} owner = {first.owner}/>
-          <Card/>
-          <Card/>
-            </div>
-            </div>
-            </div>
+         })}
+         </div>
+        //  {/* </> */}
         )
     // }
 };
