@@ -276,7 +276,10 @@ text-align: left;
 text-align: left;
 }
 
-
+.gridThree .block h2{
+  font-size: 32px;
+  font-weight: 400;
+}
 .gridFour h1, h2, p{
  text-align: left;
 }

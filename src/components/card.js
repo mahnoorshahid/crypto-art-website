@@ -1,15 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import cn from "classnames";
 import styles from "../styles/card.css"
 
 
-export default class Card extends Component {
-    render() {
+
+
+    // render() {
+     
+
+
+const Card = (props) => {
+  
+    // render() {
         return (
-          <div className="eventCardContainer">
-            <div className="eventCard">
-            <div className="eventPart noBorder">
-              {/* <img className={styles.ctaIcon} src={calender} /> */}
+
+          <div className=" eventCardContainer">
+            <div className="eventCardShadow">
+            <div className="eventPart">
+              <img src = {props.img}/>
               
             <div className="detailContainer">
               {/* <h3 className="eventTitle">NFT nMW</h3>
@@ -25,12 +33,12 @@ export default class Card extends Component {
                 </div> */}
               </div>
             </div>
-            </div>
+         
             <div className="eventCard bottom">
               <div className="flexContainer">
             <div className="detailItem">
                   {/* <img className={styles.locationIcon} src={daysIcon} /> */}
-                  <p className="eventTitle">NFT Name</p>
+                  <p className="eventTitle">NFT Name {props.name}</p>
                 
                     <p className="smallText">
                        @creatornaem <br />
@@ -50,7 +58,10 @@ export default class Card extends Component {
                  </div>
                  </div>
             </div>
+              </div>
             </div>
         )
-    }
+    // }
 }
+
+export default Card;
