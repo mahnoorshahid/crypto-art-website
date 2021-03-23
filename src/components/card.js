@@ -17,7 +17,14 @@ const Card = ({img, assets, name, price, first}) => {
           <div className=" eventCardContainer">
             <div className="eventCardShadow">
             <div className="eventPart">
-              <img src = {img}/>
+              <div className="picPadding">
+
+              
+              {/* <div className="picContainer"> */}
+              <img  className="image" src = {img}/>
+              </div>
+              {/* </div> */}
+             
               {/* {assets && assets.bundles && assets.bundles.length > 0 && assets.bundles.map((item)=>{
                 console.log("in map", item);
                 return <li  className="eventCard" key={item.id}>
