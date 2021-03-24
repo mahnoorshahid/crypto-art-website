@@ -1,4 +1,6 @@
 import React, { Component, useState, useEffect } from 'react'
+import {BrowserRouter as Router,Route,Switch, Link} from 'react-router-dom';
+
 import cn from "classnames";
 import Card from './card';
 import styles from "../styles/card.css"
@@ -14,16 +16,9 @@ const url = 'https://api.opensea.io/api/v1/bundles?limit=5&offset=0';
 // fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20', options)
 //   .then(response => console.log("response",response))
 //   .catch(err => console.error(err));
-const base = null;
 
-const first = {
-    img: "https://lvivity.com/wp-content/uploads/2021/02/ar-in-interior-design.jpg",
-    nftName: "Coach",
-    price:"8",
-    dollarValue: "$1000",
-    owner: "username"
 
-}
+
 
 
 
@@ -34,9 +29,6 @@ const CardRow = () => {
         const getAssets = async() => {
          const response = await fetch(url);
          const assets = await response.json();
-          console.log("bundle", assets);
-         // const base = assets.bundles.assets[0];
-          //console.log("base", base);
           setAssets(assets);
         };
 
@@ -63,12 +55,18 @@ const CardRow = () => {
                 return <li  className="flexLeft" key={item.id}>
                     {/* <h1>hellp {item.description}</h1> */}
                   
-                    {item && item.assets.length > 0 && item.assets.map((index) =>{
-                        console.log("index", index);
+                    {item && item.assets.length > 0 && item.assets.map((nft) =>{
+                        console.log("nft", nft);
+                        const { image_preview_url, collection, token_id} = nft;
                      return (
                         <>
-                        {/* <img src={index.image_preview_url}></img> */}
-                        <Card img = {index.image_preview_url} name= {index.collection.name}/>
+                        
+                        {/* <img src={nft.image_preview_url}></img> */}
+                    
+                        {/* <Link className="eventCardShadow" to={`/${token_id}`}> */}
+                        <Card id = {token_id} img = {image_preview_url} name={collection.name} />
+                      
+                        {/* </Link> */}
                         </>
                         )
                     })}

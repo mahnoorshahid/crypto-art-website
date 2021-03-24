@@ -1,15 +1,17 @@
 import './App.css';
 import NavBar from './components/nav';
 import Card from './components/card'
+
 import CardRow from './components/cardRow'
 import './index.css'
 import Navbar from './components/nav'
 
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Switch, useParams} from 'react-router-dom';
 
 import Home from './Home';
 import About from './About';
 import Offsets from './Offsets';
+import NFT from './NFT';
 // import MarketPlace from './MarketPlace';
 
 
@@ -33,6 +35,7 @@ function App() {
         <Route path="/offsets">
         <Offsets/>
         </Route>
+        <Route path="/:id" children={<NFT/>}></Route>
         </Switch>
       </Router>
   );

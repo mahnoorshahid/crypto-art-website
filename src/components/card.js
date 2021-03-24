@@ -9,7 +9,7 @@ import styles from "../styles/card.css"
      
 
 
-const Card = ({img, assets, name, price, first}) => {
+const Card = ({img, assets, name, price, first, id}) => {
   // {img, assets, name, price} = props;
     // render() {
         return (
