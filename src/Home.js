@@ -46,6 +46,7 @@ function Home() {
       </div>
         <div className="gridThree">
           <div className="block">
+            {/* <img src={} className=""/> */}
             <h2>Discover</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
           </div>
@@ -61,58 +62,11 @@ function Home() {
         </div>
       </section>
 
-      
-      <section className="sectionPadding purpleBg">
-        <div className="maxWidth">
-      {/* <div className="sectionRow">
-      <h1>how it works</h1>
-      </div> */}
-        <div className="gridFour">
-        <div className="block">
-            <h2 className="gridSubtitle">The problem with digital art</h2>
-          </div>
-          <div className="block">
-            <h2>Discover</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
-          </div>
-          <div className="block">
-            <h2>Buy & Sell</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
-          </div>
-          <div className="block">
-            <h2>Offset</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
-          </div>
-        </div>
-        </div>
-      </section>
 
-      <section className="sectionPadding greenBg">
-        <div className="maxWidth">
-      {/* <div className="sectionRow">
-      <h1>how it works</h1>
-      </div> */}
-        <div className="gridFour">
-        <div className="block">
-            <h2 className="gridSubtitle">The problem with digital art</h2>
-          </div>
-          <div className="block">
-            <h2>Discover</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
-          </div>
-          <div className="block">
-            <h2>Buy & Sell</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
-          </div>
-          <div className="block">
-            <h2>Offset</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
-          </div>
-        </div>
-        </div>
-      </section>
       <section className="maxWidth sectionPadding">
-    
+      <div className="sectionRow">
+      <h1>how it hwllp</h1>
+      </div>
         {/* <Card/> */}
         <CardRow/>
       </section>

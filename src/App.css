@@ -320,3 +320,8 @@ text-align: left;}
   background-color: #4056F4;
   color: white;
 }
+
+.whiteBg{
+  background-color: white;
+  color: black;
+}

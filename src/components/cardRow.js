@@ -40,7 +40,6 @@ const CardRow = () => {
         return (
         // {/* <>       */}
         <div className="cardRowContainer">
-        
             <h1>hello</h1>
             {/* assets={assets} */}
             {/* <Card img={first.img} name = {first.nftName}  price ={first.price} dollarValue={first.dollarValue} owner = {first.owner} assets={assets}/> */}
@@ -54,18 +53,14 @@ const CardRow = () => {
                 {/* const {id, asset_contract, image_original_url, image_thumbnail_url} = item; */}
                 return <li  className="flexLeft" key={item.id}>
                     {/* <h1>hellp {item.description}</h1> */}
-                  
                     {item && item.assets.length > 0 && item.assets.map((nft) =>{
                         console.log("nft", nft);
                         const { image_preview_url, collection, token_id} = nft;
                      return (
                         <>
-                        
                         {/* <img src={nft.image_preview_url}></img> */}
-                    
                         {/* <Link className="eventCardShadow" to={`/${token_id}`}> */}
                         <Card id = {token_id} img = {image_preview_url} name={collection.name} />
-                      
                         {/* </Link> */}
                         </>
                         )
@@ -73,8 +68,6 @@ const CardRow = () => {
                 </li>
          })}
          </div>
-        //  {/* </> */}
         )
-    // }
 };
 export default CardRow;

@@ -27,13 +27,13 @@ function App() {
        <NavBar/>
        <Switch>
         <Route exact path="/">
-        <Home/>
+            <Home/>
         </Route>
         <Route path="/about">
-        <About/>
+             <About/>
         </Route>
         <Route path="/offsets">
-        <Offsets/>
+             <Offsets/>
         </Route>
         <Route path="/:id" children={<NFT/>}></Route>
         </Switch>

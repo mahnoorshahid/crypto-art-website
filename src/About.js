@@ -1,26 +1,17 @@
 import './App.css';
 import Card from './components/card'
 import CardRow from './components/cardRow'
-import './index.css'
+import styles from './index.css'
 
 function About() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <header className="App-header sectionPadding maxWidth">
       <h1 className="header">
         <span>
         About NFTs {' '}  
         </span>
-        {/* <span>
-        with a  Sustainable {' '}  
-        </span>
-        <span>
-        Future {' '}  
-        </span> */}
       </h1>
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
         <a
           className="button"
           href="https://reactjs.org"
@@ -36,14 +27,14 @@ function About() {
         </a>
       </header>
   
-     
-      <section className="sectionPadding">
-      <div className="maxWidth">
 
-      <div className="sectionRow">
-      <h1>how it works</h1>
-      </div>
-        <div className="gridThree">
+         
+      <section className="sectionPadding whiteBg">
+        <div className="maxWidth">
+        <div className="gridFour">
+        <div className="block">
+            <h2 className="gridSubtitle">The problem with digital art</h2>
+          </div>
           <div className="block">
             <h2>Discover</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet pulvinar odio eget id et sed. Enim, nec, tincidunt vel leo, ac. Massa felis gravida proin est. Ac suspendisse ornare lacinia dictum massa velit quam pharetra id.</p>
@@ -59,13 +50,8 @@ function About() {
         </div>
         </div>
       </section>
-
-      
       <section className="sectionPadding purpleBg">
         <div className="maxWidth">
-      {/* <div className="sectionRow">
-      <h1>how it works</h1>
-      </div> */}
         <div className="gridFour">
         <div className="block">
             <h2 className="gridSubtitle">The problem with digital art</h2>
