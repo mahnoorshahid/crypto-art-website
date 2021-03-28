@@ -1,3 +1,8 @@
+.maxWidth{
+  margin: 0px auto;
+  max-width: 1080px;
+}
+
 .flexLeft {
     max-width: 1080px;
     display: flex;
