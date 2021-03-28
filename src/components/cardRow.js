@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Route,Switch, Link} from 'react-router-dom';
 import cn from "classnames";
 import Card from './card';
 import styles from "../styles/card.css"
+import NFT from '../NFT';
 
 const options = {method: 'GET'};
 
@@ -35,18 +36,17 @@ const CardRow = () => {
         useEffect(() => {
            getAssets();
         }, []);
-
-       
+        
+    //    const sendData = ((nft)=>{
+    //       return nft;
+           
+    //     })
+   
         return (
         // {/* <>       */}
         <div className="cardRowContainer">
             <h1>hello</h1>
             {/* assets={assets} */}
-            {/* <Card img={first.img} name = {first.nftName}  price ={first.price} dollarValue={first.dollarValue} owner = {first.owner} assets={assets}/> */}
-            {/* <Card/> */}
-            {/* <Card/> */}
-      
-           
 
          {assets && assets.bundles && assets.bundles.length > 0 && assets.bundles.map((item)=>{
                 console.log("in map", item);
@@ -55,14 +55,13 @@ const CardRow = () => {
                     {/* <h1>hellp {item.description}</h1> */}
                     {item && item.assets.length > 0 && item.assets.map((nft) =>{
                         console.log("nft", nft);
-                        const { image_preview_url, collection, token_id} = nft;
+                        const { image_preview_url, collection, token_id, id} = nft;
                      return (
-                        <>
-                        {/* <img src={nft.image_preview_url}></img> */}
-                        {/* <Link className="eventCardShadow" to={`/${token_id}`}> */}
-                        <Card id = {token_id} img = {image_preview_url} name={collection.name} />
-                        {/* </Link> */}
-                        </>
+                        <div>
+                            <Link className="eventCardShadow" to={`/${id}`}>
+                            <Card id = {id} img = {image_preview_url} name={collection.name} />
+                            </Link>
+                        </div>
                         )
                     })}
                 </li>

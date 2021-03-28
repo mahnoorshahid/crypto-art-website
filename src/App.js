@@ -36,6 +36,7 @@ function App() {
              <Offsets/>
         </Route>
         <Route path="/:id" children={<NFT/>}></Route>
+        <Route path="/nft/"></Route>
         </Switch>
       </Router>
   );

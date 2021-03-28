@@ -10,11 +10,11 @@ import styles from "../styles/card.css"
 
 
 const Card = ({img, assets, name, price, first, id}) => {
-  // {img, assets, name, price} = props;
+
     // render() {
         return (
 
-          <div className=" eventCardContainer">
+          <div className="eventCardContainer">
             <div className="eventCardShadow">
             <div className="eventPart">
               <div className="picPadding">
@@ -62,24 +62,19 @@ const Card = ({img, assets, name, price, first, id}) => {
               <div className="flexContainer">
             <div className="detailItem">
                   {/* <img className={styles.locationIcon} src={daysIcon} /> */}
-                  <p className="eventTitle">NFT Name {name}</p>
-                
-                    <p className="smallText">
-                       @creatornaem <br />
-                    </p>
-              
-                </div>
-                <div className="detailItem">
+                  <h1 className="eventTitle">{name}</h1>
                   <div>
                 <p className="smallText allCaps">
-                       List price <br />
+                       starting price <br />
                     </p>
-                <p className="price">7 Eth</p>
+                <p className="price">0.5 Eth</p>
                 </div>
-                    
+                
+              
+                </div>
+                {/* <div className="detailItem">
                     <p className="smallText"> Created Mar 7th</p> 
-                      
-                 </div>
+                 </div> */}
                  </div>
             </div>
               </div>
