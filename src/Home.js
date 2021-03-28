@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from './components/nav';
 import Card from './components/card'
 import CardRow from './components/cardRow'
+import {BrowserRouter as Router,Route,Switch, Link} from 'react-router-dom';
 import './index.css'
 
 function Home() {
@@ -22,11 +23,11 @@ function Home() {
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <a
+        <Link
+        to ='/about'
           className="button"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+         // target="_blank"
+         // rel="noopener noreferrer"
         > 
           <div className="buttonText">
           Learn More
@@ -34,7 +35,7 @@ function Home() {
           <span className="arrow">
           &rarr;
           </span>
-        </a>
+        </Link>
       </header>
   
      

@@ -55,7 +55,8 @@ const NFT = () => {
          const result = assets.assets[0];
           console.log("assets", assets);
           console.log("result", result);
-          setAssets(assets);
+          const selected = assets.assets;
+          setAssets(selected);
           setTitle(result.id);
         };
 
@@ -67,8 +68,9 @@ const NFT = () => {
 
         useEffect(() =>{
             getAssets();
-
-           const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.id === parseInt(id));
+            
+         //const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.assets.id === parseInt(id));
+         const selectedNFT = assets  && assets.length && assets.find((nft) => nft.id === parseInt(id));
 
             setTitle(selectedNFT);
             //returning false
@@ -89,38 +91,34 @@ const NFT = () => {
             {/* <h2>{props.id}</h2> */}
             {assets  && assets.length > 0 && assets.map((item)=>{
                 console.log("item", item);
-                {item && item.assets.length > 0 && item.assets.map((nft) =>{
-                    console.log("nft", nft);
-                        const { image_preview_url, collection, token_id, id} = nft;
+                
+                  const { image_preview_url, collection, token_id, id, top_bid} = item;
                     
                     return <div>
-                        <h1>
-                            {nft.id}
+                        <h1> one nft
+                            {item.collection.name}
+                            {id}
                         </h1>
                         </div>
-                })};
+                })}
      
-                 })}
-         {/* {assets && assets.bundles && assets.bundles.length > 0 && assets.map((item)=>{ */}
-            {assets && assets.length >= 0 && assets.map((item)=>{
+                 {/* })} */}
+            {/* {assets && assets.length >= 0 && assets.map((item)=>{
                 console.log('item',item);
-                {/* console.log("in nft", item); */}
                 return (
                     
-                <li  className="flexLeft" key={item.id}>
-                {/* <p>{collection.name}</p> */}
-                    {item && item.assets.length > 0 && item.assets.map((nft) =>{
-                        {/* console.log("nft2", nft); */}
+                <div  className="flexLeft" key={item.id}>
+                    {item.collection.name}
+                    {item && item.length > 0 && item.map((nft) =>{
                         const { image_preview_url, collection, token_id, description} = nft;
                      return (
                         <div>
                         <p>{collection.name}</p>
-                        {/* <Card img = {image_preview_url} name= {collection.name}/> */}
                         </div>
                         )
                     })}
-                </li>
-         )})}
+                </div>
+            )})} */}
          </div>
         </>
         )
