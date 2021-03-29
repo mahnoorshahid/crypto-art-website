@@ -54,12 +54,19 @@ const NFT = () => {
 
         //const result = assets.assets[0];
         const result = assets.assets;
+      
+
           console.log("assets", assets);
           console.log("result", result);
           //selected array index id must match param
-          const selected = assets.assets[2];
-          setAssets(selected);
-          setTitle(selected.name);
+          const selected = assets.assets[3];
+
+         setAssets(selected);
+         //result is an array
+         // setAssets(result);
+
+          setTitle(selected.collection.name);
+          console.log("selected", selected);
         };
 
         // useEffect(() => {
@@ -72,40 +79,76 @@ const NFT = () => {
             getAssets();
             
        // const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.id === parseInt(id));
-         //const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
-         const selectedNFT = assets && assets.length > 0 && assets.find((nft) => nft.id === parseInt(id));
+         
+       
+       //this one works
+        const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
+
+         //const selectedNFT = assets && assets.length > 0 && assets.find((nft) => nft.id === parseInt(id));
 
 
-         setTitle(selectedNFT);
+        //  const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
+        //  console.log('ASSETS',assets);
+        //  setTitle(selectedNFT);
             //returning false
-          console.log("selectedNFT", selectedNFT);
+         console.log("selectedNFT", selectedNFT);
 
         }, []);
         console.log("PARAMS",useParams(assets)); //assets prev
       
-
+        console.log("assets id", assets);
+        const isDescription = assets && assets.collection && assets.collection.description !== "" ? true : false;
+        const { token_id, top_bid, num_sales, owner, collection } = assets;
         return (
             <>
-        <div className="maxWidth">
-        
-            <h1>collection.name {assets.name}</h1>
+        <div className="maxWidth flexCommon">
+         <div className="right">
+           <p className="smallText">nft name</p>
             <h1>
-                selected asset
              {title}
             </h1>
-            {/* <h2>{props.id}</h2> */}
-            {assets  && assets.length > 0 && assets.map((item)=>{
+
+            <p className="smallText">owner</p>
+            <p>
+           @{assets && assets.owner && assets.owner.user && assets.owner.user.username}
+           </p>
+          {isDescription &&
+           <p className="description">
+            {assets && assets.collection && assets.description}
+           </p>
+          }
+                <div className="flexCommonPrice">
+                    <div>
+                        <p className="smallText">price</p>
+                        <p className="price">0.3 Eth</p>
+                     </div>
+                     <div className="left">
+                        <p className="ecoPrice smallText">Eco Price</p>
+                        <p className="">195 KgCO2</p>
+                        <p className="">223 kWh</p>
+                     </div>
+                </div>
+            <div className="form">
+
+            </div>
+           </div>
+           <div className="flexRight">
+
+           <img src ={assets.image_preview_url}></img>
+           </div>
+            {/* {assets  && assets.length > 0 && assets.map((item)=>{
                 console.log("item", item);
                 
                   const { image_preview_url, collection, token_id, id, top_bid} = item;
                     
                     return <div>
-                        <h1> one nft
+                        <h1> array
                             {item.collection.name}
+                            param id
                             {id}
                         </h1>
                         </div>
-                })}
+                })} */}
      
                  {/* })} */}
             {/* {assets && assets.length >= 0 && assets.map((item)=>{
