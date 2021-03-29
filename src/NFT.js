@@ -52,12 +52,14 @@ const NFT = () => {
          const response = await fetch(url);
          const assets = await response.json();
 
-         const result = assets.assets[0];
+        //const result = assets.assets[0];
+        const result = assets.assets;
           console.log("assets", assets);
           console.log("result", result);
-          const selected = assets.assets;
+          //selected array index id must match param
+          const selected = assets.assets[2];
           setAssets(selected);
-          setTitle(result.id);
+          setTitle(selected.name);
         };
 
         // useEffect(() => {
@@ -69,23 +71,26 @@ const NFT = () => {
         useEffect(() =>{
             getAssets();
             
-         //const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.assets.id === parseInt(id));
-         const selectedNFT = assets  && assets.length && assets.find((nft) => nft.id === parseInt(id));
+       // const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.id === parseInt(id));
+         //const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
+         const selectedNFT = assets && assets.length > 0 && assets.find((nft) => nft.id === parseInt(id));
 
-            setTitle(selectedNFT);
+
+         setTitle(selectedNFT);
             //returning false
-            console.log("selectedNFT", selectedNFT);
+          console.log("selectedNFT", selectedNFT);
 
         }, []);
-        console.log("PARAMS",useParams(assets));
+        console.log("PARAMS",useParams(assets)); //assets prev
       
 
         return (
             <>
         <div className="maxWidth">
         
-            <h1>collection.name {assets.id}</h1>
+            <h1>collection.name {assets.name}</h1>
             <h1>
+                selected asset
              {title}
             </h1>
             {/* <h2>{props.id}</h2> */}
