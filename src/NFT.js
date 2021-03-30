@@ -10,38 +10,7 @@ const options = {method: 'GET'};
 //const url = 'https://api.github.com/users';
 
 const url = 'https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20';
-
-const data = [{
-        nftName: '2 Psyche',
-        eth: "0.2",
-        description: (
-            <>
-            <p>
-            83m² plot title parcel on Helios, 778m from the origin, with a 8m build height, floor is at 0m elevation
-            </p>
-            </>
-        ),
-        date: "March 3rd",
-        creator: 'creator',
-        hasOwner: false,
-        owner: 'owner name'
-    },
-    {
-        nftName: '2 Psyche',
-        eth: "0.2",
-        description: (
-            <>
-            <p>
-            83m² plot title parcel on Helios, 778m from the origin, with a 8m build height, floor is at 0m elevation
-            </p>
-            </>
-        ),
-        date: "March 3rd",
-        creator: 'creator',
-        hasOwner: false,
-        owner: 'owner name'
-    }
-]
+//const url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
 
 const NFT = () => {
         const id = useParams();
@@ -55,22 +24,25 @@ const NFT = () => {
         // const selectedNFTAbove = assets && assets.assets && assets.assets.length && assets.assets.find((nft) => nft.id === parseInt(id));
         //const result = assets.assets[0];
         const result = assets.assets;
-         const selectedNFTAbove = result.map((nft)=> nft.id === parseInt(id));
+        // const selectedNFTAbove = result.map((nft)=> nft.id === parseInt(id));
+
+         const selectedNFTAbove = result.map((nft)=> nft.id);
+         const findNFTID = selectedNFTAbove.find((item) => item.id === parseInt(id));
 
 
           console.log("assets", assets);
       console.log("selectedNFTAbove",selectedNFTAbove );
-      console.log("resutl nft",result[3].id );
-          console.log("result", result);
+      ///wirjubg
+      console.log("resutl nft",result[0].id );
+          console.log("result nft2", selectedNFTAbove);
+          console.log("finding the id", findNFTID);
           //selected array index id must match param
           const selected = assets.assets[3];
-          const getId = assets;
 
          setAssets(selected);
 
          //result is an array
          // setAssets(result);
-
           setTitle(selected.collection.name);
           console.log("selected", selected);
         };
@@ -78,22 +50,19 @@ const NFT = () => {
         // useEffect(() => {
         //    getAssets();
         // }, []);
-
-        
-
         useEffect(() =>{
             getAssets();
             
        // const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.id === parseInt(id));
          
-       const idNFT = null;
        //this one works
        // const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
        //THIS WORKS ASSETS.ID MATCHES PARAM ID!!
-       const selectedNFT = assets.map((nft)=> nft.id === parseInt(id));
-      //const selectedNFT = assets.id === parseInt(id) ? assets.id :null;
+   //   const selectedNFT = assets && assets.map((nft)=> nft.id === parseInt(id));
 
-         console.log("selectedNFT", selectedNFT);
+
+
+         //console.log("selectedNFT", selectedNFT);
 
         }, []);
         console.log("PARAMS",useParams(assets)); //assets prev
@@ -105,15 +74,22 @@ const NFT = () => {
             <>
         <div className="maxWidth flexCommon">
          <div className="left">
-           <p className="smallText">nft name</p>
+           {/* <p className="smallText">nft name</p> */}
             <h1>
              {title}
             </h1>
-
+            {assets && assets.owner && 
+            <div className="ownerDiv">
+            
+            <img src={assets && assets.owner && assets.owner.user && assets.owner.profile_img_url}></img>
+            <div>
             <p className="smallText allCaps">owner</p>
             <p className="username">
            @{assets && assets.owner && assets.owner.user && assets.owner.user.username}
            </p>
+           </div>
+           </div>
+            }
                 <div className="flexCommonPrice">
                     <div>
                         <p className="smallText allCaps">Asking Price</p>
@@ -127,14 +103,24 @@ const NFT = () => {
                      </div>
                 </div>
             <div className="eventCardShadowInput">
-                
-                <article>
+                <article className="cardBorderPadding">
                     <form className="form">
                         <div className="inputContainer">
-                            <label htmlFor="carbonOffset">offset:</label>
-                            <input type="text"/>
+                            <label className="commonTxtPadding carbonOffset" htmlFor="carbonOffset">Carbon Offset Required</label>
+                            <div className="inputBtn">
+                            <input type="text" pattern="[0-9]*"/>
+                            <button className="whiteBtn">
+                                offs
+                            </button>
+                            </div>
                         </div>
                     </form>
+                    <Link>
+                    <p className="commonTxtPadding">
+                    How Carbon Offsets work <span>&rarr;</span>
+                    </p>
+                    
+                    </Link>
                 </article>
    
             </div>

@@ -66,7 +66,7 @@ function Home() {
 
       <section className="maxWidth sectionPadding">
       <div className="sectionRow">
-      <h1>how it hwllp</h1>
+      <h1>Selected Bundles</h1>
       </div>
         {/* <Card/> */}
         <CardRow/>
