@@ -80,10 +80,14 @@ const NFT = () => {
             
        // const selectedNFT = assets && assets.assets && assets.assets.length > 0 && assets.assets.find((nft) => nft.id === parseInt(id));
          
-       
+       const idNFT = null;
        //this one works
-        const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
+       // const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
+       //THIS WORKS ASSETS.ID MATCHES PARAM ID!!
+       
+       const selectedNFT = assets.id === parseInt(id) ? idNFT=assets.id :null;
 
+            console.log('find nft', assets.id);
          //const selectedNFT = assets && assets.length > 0 && assets.find((nft) => nft.id === parseInt(id));
 
 
@@ -102,39 +106,49 @@ const NFT = () => {
         return (
             <>
         <div className="maxWidth flexCommon">
-         <div className="right">
+         <div className="left">
            <p className="smallText">nft name</p>
             <h1>
              {title}
             </h1>
 
-            <p className="smallText">owner</p>
-            <p>
+            <p className="smallText allCaps">owner</p>
+            <p className="username">
            @{assets && assets.owner && assets.owner.user && assets.owner.user.username}
            </p>
-          {isDescription &&
-           <p className="description">
-            {assets && assets.collection && assets.description}
-           </p>
-          }
                 <div className="flexCommonPrice">
                     <div>
-                        <p className="smallText">price</p>
+                        <p className="smallText allCaps">Asking Price</p>
                         <p className="price">0.3 Eth</p>
+                        <p className="">$539</p>
                      </div>
                      <div className="left">
-                        <p className="ecoPrice smallText">Eco Price</p>
+                        <p className="ecoPrice smallText allCaps">Eco Price</p>
                         <p className="">195 KgCO2</p>
                         <p className="">223 kWh</p>
                      </div>
                 </div>
-            <div className="form">
-
+            <div className="eventCardShadowInput">
+                
+                <article>
+                    <form className="form">
+                        <div className="inputContainer">
+                            <label htmlFor="carbonOffset">offset:</label>
+                            <input type="text"/>
+                        </div>
+                    </form>
+                </article>
+   
             </div>
            </div>
-           <div className="flexRight">
+           <div className="right">
 
            <img src ={assets.image_preview_url}></img>
+           {isDescription &&
+           <p className="description">
+            {assets && assets.collection && assets.collection.description}
+           </p>
+          }
            </div>
             {/* {assets  && assets.length > 0 && assets.map((item)=>{
                 console.log("item", item);
@@ -150,7 +164,6 @@ const NFT = () => {
                         </div>
                 })} */}
      
-                 {/* })} */}
             {/* {assets && assets.length >= 0 && assets.map((item)=>{
                 console.log('item',item);
                 return (

@@ -41,9 +41,7 @@ const CardRow = () => {
     //       return nft;
            
     //     })
-   
         return (
-        // {/* <>       */}
         <div className="cardRowContainer">
          {/* <h1>hello</h1> */}
          {assets && assets.bundles && assets.bundles.length > 0 && assets.bundles.map((item)=>{
@@ -55,7 +53,7 @@ const CardRow = () => {
                         console.log("nft", nft);
                         const { image_preview_url, collection, token_id, id} = nft;
                      return (
-                        <div>
+                        <div className="maxCardWidth">
                             <Link className="eventCardShadow" to={`/${id}`}>
                             <Card id = {id} img = {image_preview_url} name={collection.name} />
                             </Link>

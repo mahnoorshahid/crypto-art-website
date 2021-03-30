@@ -6,20 +6,15 @@ import styles from "../styles/card.css"
 
 
     // render() {
-     
-
-
 const Card = ({img, assets, name, price, first, id}) => {
 
     // render() {
         return (
 
-          <div className="eventCardContainer">
+          <div className="eventCardContainerInner">
             <div className="eventCardShadow">
             <div className="eventPart">
               <div className="picPadding">
-
-              
               {/* <div className="picContainer"> */}
               <img  className="image" src = {img}/>
               </div>
@@ -66,7 +61,7 @@ const Card = ({img, assets, name, price, first, id}) => {
                   <div>
                 <p className="smallText allCaps">
                        starting price <br />
-                    </p>
+                </p>
                 <p className="price">0.5 Eth</p>
                 </div>
                 
