@@ -52,16 +52,22 @@ const NFT = () => {
          const response = await fetch(url);
          const assets = await response.json();
 
+        // const selectedNFTAbove = assets && assets.assets && assets.assets.length && assets.assets.find((nft) => nft.id === parseInt(id));
         //const result = assets.assets[0];
         const result = assets.assets;
-      
+         const selectedNFTAbove = result.map((nft)=> nft.id === parseInt(id));
+
 
           console.log("assets", assets);
+      console.log("selectedNFTAbove",selectedNFTAbove );
+      console.log("resutl nft",result[3].id );
           console.log("result", result);
           //selected array index id must match param
           const selected = assets.assets[3];
+          const getId = assets;
 
          setAssets(selected);
+
          //result is an array
          // setAssets(result);
 
@@ -84,17 +90,9 @@ const NFT = () => {
        //this one works
        // const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
        //THIS WORKS ASSETS.ID MATCHES PARAM ID!!
-       
-       const selectedNFT = assets.id === parseInt(id) ? idNFT=assets.id :null;
+       const selectedNFT = assets.map((nft)=> nft.id === parseInt(id));
+      //const selectedNFT = assets.id === parseInt(id) ? assets.id :null;
 
-            console.log('find nft', assets.id);
-         //const selectedNFT = assets && assets.length > 0 && assets.find((nft) => nft.id === parseInt(id));
-
-
-        //  const selectedNFT = assets && assets.length && assets.find((nft) => nft.id === parseInt(id));
-        //  console.log('ASSETS',assets);
-        //  setTitle(selectedNFT);
-            //returning false
          console.log("selectedNFT", selectedNFT);
 
         }, []);

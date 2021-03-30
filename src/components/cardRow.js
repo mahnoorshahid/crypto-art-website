@@ -47,13 +47,13 @@ const CardRow = () => {
          {assets && assets.bundles && assets.bundles.length > 0 && assets.bundles.map((item)=>{
                 console.log("in map", item);
                 {/* const {id, asset_contract, image_original_url, image_thumbnail_url} = item; */}
-                return <li  className="flexLeft" key={item.id}>
+                return <li  className="flexLeft" >
                     {/* <h1>hellp {item.description}</h1> */}
                     {item && item.assets.length > 0 && item.assets.map((nft) =>{
                         console.log("nft", nft);
                         const { image_preview_url, collection, token_id, id} = nft;
                      return (
-                        <div className="maxCardWidth">
+                        <div key={nft.id}className="maxCardWidth">
                             <Link className="eventCardShadow" to={`/${id}`}>
                             <Card id = {id} img = {image_preview_url} name={collection.name} />
                             </Link>
