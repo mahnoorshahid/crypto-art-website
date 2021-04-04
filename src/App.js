@@ -10,8 +10,10 @@ import {BrowserRouter as Router,Route,Switch, useParams} from 'react-router-dom'
 
 import Home from './Home';
 import About from './About';
+import OffsetCard from './offsetCard';
 import Offsets from './Offsets';
 import NFT from './NFT';
+
 // import MarketPlace from './MarketPlace';
 
 
@@ -36,7 +38,10 @@ function App() {
              <Offsets/>
         </Route>
         <Route path="/:id" children={<NFT/>}></Route>
-        <Route path="/nft/"></Route>
+        <Route path="/nft"></Route>
+        <Route path="/offset">
+        <OffsetCard/>
+        </Route>
         </Switch>
       </Router>
   );
