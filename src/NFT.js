@@ -57,20 +57,22 @@ const NFT = () => {
        const decreaseNum = (e) => {
         e.preventDefault();
         setCount(count - 1);
+        if (count <= 0) {
+            setCount(0);
+        }
    }
 
        const showModal = (e) => {
            e.preventDefault();
            setShowModal(true);
            setHideModal(false);
-           console.log("selected show modal",  show)
        }
 
        const hideModal = (e) => {
            e.preventDefault();
+
            setShowModal(false);
             setHideModal(true);
-            console.log("selected hide modal",  hide)
        }
        const classNameHide = hide ? "displayNone" : "display";
 
@@ -91,7 +93,7 @@ const NFT = () => {
       
         console.log("assets id", assets);
         const isDescription = assets && assets.collection && assets.collection.description !== "" ? true : false;
-        const { token_id, top_bid, num_sales, owner, collection } = assets;
+
         return (
             <>
         <div className="maxWidth flexCommon">
@@ -123,13 +125,10 @@ const NFT = () => {
                      </div>
                 </div>
               
-            
-               
-                
-               <div className={hide == true ? "displayNone" : "display"}>
+               <div className={hide == true ? "modal displayNone" : "modal display"}>
                 <div className="modalContainer">
                   <div className="eventCardShadowInput">
-                 helloooo
+                  {title}
                </div>
                <button onClick = {hideModal}>
                    hide modal
@@ -137,16 +136,12 @@ const NFT = () => {
                 </div>
              </div>
 
-           
-               
-                
             <div className="eventCardShadowInput">
                 <article className="cardBorderPadding">
                     <form className="form">
                         <div className="inputContainer">
                             <label className="commonTxtPadding carbonOffset" htmlFor="carbonOffset">Carbon Offset Required</label>
                             <div className="inputBtn">
-
                             <input 
                             type="text" 
                             pattern="[0-9]*"    
@@ -166,9 +161,9 @@ const NFT = () => {
                         </div>
                     </form>
                     <Link>
-                    <p className="commonTxtPadding">
-                    How Carbon Offsets work <span>&rarr;</span>
-                    </p>
+                        <p className="commonTxtPadding">
+                        How Carbon Offsets work <span>&rarr;</span>
+                        </p>
                     </Link>
                 </article>
                 {/* <OffsetCard show={show}/> */}
@@ -176,7 +171,13 @@ const NFT = () => {
            </div>
          
            <div className="right">
-           <img src ={assets.image_preview_url}></img>
+
+            <div className="nftContainer">
+                <div className="nftWrapper">
+                  <img src={assets.image_preview_url}></img>
+                </div>
+            </div>
+           
            {isDescription &&
            <p className="description">
             {assets && assets.collection && assets.collection.description}

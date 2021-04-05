@@ -63,9 +63,7 @@ const Card = ({img, assets, name, price, first, id}) => {
                        starting price <br />
                 </p>
                 <p className="price">0.5 Eth</p>
-                </div>
-                
-              
+                </div>         
                 </div>
                 {/* <div className="detailItem">
                     <p className="smallText"> Created Mar 7th</p> 
