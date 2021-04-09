@@ -13,11 +13,14 @@ const options = {method: 'GET'};
 const url = 'https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20';
 //const url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
 
+
 const NFT = () => {
         const id = useParams();
         const [assets, setAssets] = useState([]);
         const [title, setTitle] = useState('default title');
+        const [user, setUser] = useState('default User')
         const [count, setCount] = useState(1);
+        const [value, setValue] = useState("");
         const [show, setShowModal] = useState(false);
         const [hide, setHideModal] = useState(true);
 
@@ -43,6 +46,8 @@ const NFT = () => {
 
          setAssets(selected);
           setTitle(selected.collection.name);
+          const isUsername= selected.creator.user ? selected.creator.user.username : null; 
+          setUser(isUsername);
           console.log("selected", selected);
         };
 
@@ -70,10 +75,16 @@ const NFT = () => {
 
        const hideModal = (e) => {
            e.preventDefault();
-
            setShowModal(false);
-            setHideModal(true);
+           setHideModal(true);
        }
+       let change = (e) => {
+           value = e.target.value;
+       }
+
+       if (typeof window.ethereum !== 'undefined') {
+        console.log('MetaMask is installed!');
+      }
        const classNameHide = hide ? "displayNone" : "display";
 
         useEffect(() =>{
@@ -124,15 +135,94 @@ const NFT = () => {
                         <p className="">223 kWh</p>
                      </div>
                 </div>
-              
+              {/* MODAL SHOWN */}
                <div className={hide == true ? "modal displayNone" : "modal display"}>
                 <div className="modalContainer">
-                  <div className="eventCardShadowInput">
-                  {title}
-               </div>
-               <button onClick = {hideModal}>
-                   hide modal
-               </button>
+                  <div className="eventCardShadowInput modalInputContainer">
+                      <h1>
+                      {title}
+                      </h1>
+                    <p>
+                        You are bidding for {title} by {user}
+                    </p>
+                    <div className="inputContainer">
+                            <label className="commonTxtPadding carbonOffset" htmlFor="carbonOffset">Your Bidding Amount</label>
+                            <div className="inputBtn">
+                            <input 
+                            className="outlineEnd"
+                            type="text" 
+                            pattern="[0-9]*"   
+                            /> 
+                            <span>
+                                ETH
+                            </span>
+
+                        </div>
+                     </div>
+
+                     <div className="inputContainer">
+                            <label className="commonTxtPadding carbonOffset" htmlFor="carbonOffset">Your Carbon Offset Amount</label>
+                            <div className="inputBtn">
+                            <input 
+                            className="outlineEnd"
+                            type="text" 
+                            pattern="[0-9]*"    
+                            value={count}           
+                            /> 
+                            <div className="arrowBtnFlex">
+                            <button onClick={changeNum} className="whiteBtn arrowBtn">
+                                  &uarr;
+                            </button>
+                            <button onClick={decreaseNum} className="whiteBtn arrowBtn">
+                                 &darr;
+                            </button>
+                            </div>
+                            <span>
+                                OFF
+                            </span>
+                            </div>
+                     </div>
+                    <div className="cardBorderPadding lessPadding">
+                    <Link className="">
+                        <p className="commonTxtPadding">
+                        Choose your preferable project <span>&rarr;</span>
+                        </p>
+                    </Link>
+                    </div>
+                     
+                     <div className="recieptGridContainer">
+                         <div className="recieptRow">
+                             <p className="summaryTxt">
+                                 Your Balance</p>
+                             <p className="summaryTxt">
+                                 20.2 ETH
+                             </p>
+                         </div>
+                         <div className="recieptRow">
+                             <p className="summaryTxt">
+                                 TOTAL Offsets</p>
+                             <p className="summaryTxt">
+                                 {count}.00 OFF
+                             </p>
+                         </div>
+                         <div className="recieptRow">
+                             <p className="summaryTxt">
+                                 Total Bid Amount</p>
+                             <p className="summaryTxt">
+                                 0.7 ETH
+                             </p>
+                         </div>
+                     </div>
+                     <div className="buttonRow recieptRow">
+                     <button className="whiteBtn" onClick = {hideModal}>
+                      Cancel
+                     </button>
+                     <button  className="blackBtn" onClick = {hideModal}>
+                      Place bid
+                     </button>
+                     </div>
+                 </div>
+             
                 </div>
              </div>
 
@@ -147,24 +237,33 @@ const NFT = () => {
                             pattern="[0-9]*"    
                             value={count}
                             />  
+                            <div className="arrowBtnFlex">
+                            <button onClick={changeNum} className="whiteBtn arrowBtn">
+                                  &uarr;
+                            </button>
+                            <button onClick={decreaseNum} className="whiteBtn arrowBtn">
+                                 &darr;
+                            </button>
+                            </div>
                             {/* {count} */}
-                            <button onClick={changeNum} className="whiteBtn">
-                                up
-                            </button>
-                            <button onClick={decreaseNum} className="whiteBtn">
-                                down
-                            </button>
-                            <button onClick= {showModal} className="whiteBtn">
+                            {/* <button onClick= {showModal} className="whiteBtn">
                                 offs
-                            </button>
+                            </button> */}
                             </div>
                         </div>
                     </form>
+                       <button onClick= {showModal} className="blackBtn">
+                           Place a bid
+                     </button>
+                     {/* <button onClick= {openMetaMask} className="blackBtn">
+                                connect wallet
+                     </button> */}
                     <Link>
                         <p className="commonTxtPadding">
                         How Carbon Offsets work <span>&rarr;</span>
                         </p>
                     </Link>
+                        
                 </article>
                 {/* <OffsetCard show={show}/> */}
             </div>

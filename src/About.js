@@ -9,22 +9,12 @@ function About() {
       <header className="App-header sectionPadding maxWidth">
       <h1 className="header">
         <span>
-        About NFTs {' '}  
+        OUR NEW & IMPROVED {' '}  
+        </span>
+        <span>
+        CREATIVE INDUSTRY {' '}  
         </span>
       </h1>
-        <a
-          className="button"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        > 
-          <div className="buttonText">
-          Learn More
-          </div>
-          <span className="arrow">
-          &rarr;
-          </span>
-        </a>
       </header>
   
 

@@ -9,6 +9,7 @@ import Navbar from './components/nav'
 import {BrowserRouter as Router,Route,Switch, useParams} from 'react-router-dom';
 
 import Home from './Home';
+import Marketplace from './Marketplace';
 import About from './About';
 import OffsetCard from './offsetCard';
 import Offsets from './Offsets';
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path="/offsets">
              <Offsets/>
+        </Route>
+        <Route path="/marketplace">
+             <Marketplace/>
         </Route>
         <Route path="/:id" children={<NFT/>}></Route>
         <Route path="/nft"></Route>

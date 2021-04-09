@@ -10,8 +10,10 @@ const options = {method: 'GET'};
 
 //const url = 'https://api.github.com/users';
 
+let num = "2";
 //const url = 'https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20';
-const url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
+// const url = `https://api.opensea.io/api/v1/bundles?limit=${num}&offset=0`;
+let url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
 //const url = "https://api.opensea.io/api/v1/asset/0x06012c8cf97bead5deae237070f9587f8e7a266d/556324/";
 
 // fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20', options)
@@ -23,8 +25,10 @@ const url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
 
 
 
-const CardRow = () => {
+const CardRow = (props) => {
     // render() {
+       const {moreFetch} = props;
+        moreFetch ? url = 'https://api.opensea.io/api/v1/bundles?limit=11&offset=0' : url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
         const [assets, setAssets] = useState([]);
 
         const getAssets = async() => {

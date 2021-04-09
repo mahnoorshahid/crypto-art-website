@@ -12,21 +12,15 @@
     width: 100%;
     flex-wrap: wrap;
   }
-  /* .eventCardCenterContainer {
-    max-width: 1080px;
-    display: flex;
-    margin: 0px auto;
-    flex-direction: column;
-    justify-content: center;
-  } */
+
 
   .eventCardContainer {
     max-width: 100%;
-    /* margin: 0px 16px 16px 0px; */
     text-decoration: none;
   }
 .eventCardContainerInner{
-  width: 100%
+  width: 100%;
+  height: 100%;
 }
 
 .maxCardWidth{
@@ -35,11 +29,9 @@
 }
 
 .eventCardShadow {
-  /* position: relative; */
   background-color: #fff;
   text-decoration: none;
   max-width: 100%;
-  /* border: 1px solid #eaeaea; */
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   box-shadow: 0px 0px 10px rgba(200, 200, 200, 0.3);
@@ -50,7 +42,6 @@
   text-decoration: none;
   outline: none;
   max-width: 100%;
-  /* border: 1px solid #eaeaea; */
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   /* box-shadow: 0px 0px 10px rgba(200, 200, 200, 0.3); */
@@ -65,12 +56,13 @@
 }
 
 .inputContainer input{
+  position: relative;
   /* width: 267px; */
   outline: none;
   padding: 8px 16px;
   flex-grow: 1;
   flex-shrink: 1;
-  max-width: 80%;
+  max-width: 100%;
   height: 42px;
 /* left: 0px;
 top: 0px; */
@@ -96,6 +88,14 @@ font-weight: 600;
 }
 .commonTxtPadding {
   padding: 0px 0px 0px 8px;
+}
+.lessPadding {
+  padding: 0px 0px;
+}
+
+.lessPadding a p{
+  margin: 5px 0px;
+  padding: 0px;
 }
 .cardBorderPadding{
   padding: 16px 8px;
@@ -454,7 +454,7 @@ font-size: 16px;
     animation-fill-mode: forwards;
   }
 
-  .button{
+  .button, .whiteBtn{
     position: relative;
     height: 35px;
     width: 175px;
@@ -468,16 +468,50 @@ font-size: 16px;
   text-decoration: none;
   }
 
-  .whiteBtn {
+  button:hover{
+    cursor: pointer;
+  }
+
+  .inputContainer .whiteBtn {
     background-color: white;
     border: 2px solid  rgb(26, 26, 26);
     color:rgb(26, 26, 26);
   }
+ 
 
   .blackBtn{
     border: 2px solid  rgb(26, 26, 26);
+    padding: 10px 0px;
+    width: 100%;
+    /* max-width: 350px; */
+    margin: 20px 20px 20px 0px;
+    display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  border-radius: 21px;
+  background-color: #2a2a00;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
   }
   
+  .blackBtn:hover{
+    cursor: pointer;
+    background-color: #3a3a3a;
+    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .navBar{
+    /* margin: 0px; */
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 16px;
+    max-height: 40px;
+  }
   .button .buttonText{
   text-align: left;
     background-color: rgb(26, 26, 26);
@@ -498,6 +532,28 @@ font-size: 16px;
     color: white;
     text-decoration: none;
   }
+
+  .arrowBtnFlex{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    
+    /* left: 10%; */
+  }
+
+  .arrowBtnFlex .arrowBtn {
+    font-weight: 400;
+    border: none; 
+    background-color: transparent;
+    font-size: 12;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* .inputContainer .arrowBtn {
+    background-color: white;
+    border: 2px solid  rgb(26, 26, 26);
+    color:rgb(26, 26, 26);
+  } */
   
   .button .arrow{
     position: absolute;
@@ -509,12 +565,65 @@ font-size: 16px;
     padding: 8px 16px 8px 16px;
   }
 
+  /* ********** MODAL ********** */
+
+
 .modal{
   position: absolute;
-  top: 10%;
+  top: 0%;
   width: 100%;
-  height: 100%;
+  height: 80%;
   max-width: 496px;
+  z-index: 5;
+  height: 800px;
+}
+.modal .arrowBtnFlex{
+  z-index: 8;
+  right: 5%;
+  margin-right: 20px;
+}
+
+.modal label{
+  padding: 24px 0px 0px 0px;
+  font-weight: 700;
+}
+
+.modalContainer .eventCardShadowInput .modalInputContainer{
+  background-color: #fff;
+  text-decoration: none;
+  outline: none;
+  max-width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  /* box-shadow: 0px 0px 10px rgba(200, 200, 200, 0.3); */
+  background: #FFFEFE;
+  box-shadow: 0px 0px 16px rgba(229, 229, 229, 0.73);
+  border-radius: 8px;
+
+}
+
+.modalContainer .eventCardShadowInput{
+  padding: 16px;
+  height: 570px;
+}
+.inputContainer input.outlineEnd{
+position: relative;
+max-width: 91%;
+z-index: 2;
+}
+
+.inputContainer span{
+  position: absolute;
+  height: auto;
+  padding: 10px 10px 10px 70px;
+  right: 1%;
+  margin-right: 20px;
+  border:rgb(26, 26, 26) 2px solid;
+  border-radius: 0px 20px 20px 0px;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .displayNone {
@@ -537,8 +646,6 @@ font-size: 16px;
   /*  */
   position: relative;
   flex-grow: 1;
-  /* align-items: center; */
-  /* max-width: 100%; */
   max-height: 560px;
 }
 
@@ -557,10 +664,48 @@ font-size: 16px;
   object-fit: contain;
   width: 100%;
   height: auto;
+  height: 500px;
   /* position: absolute; */
   box-shadow: 0px 7px 38px -10px rgb(29 29 29 / 33%);
 }
 
+.recieptGridContainer{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+}
+
+.recieptGridContainer .recieptRow, .recieptRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.recieptRow .whiteBtn, .recieptRow .blackBtn{
+  width: 100%;
+  max-width: 210px;
+}
+
+.recieptRow .whiteBtn{
+  justify-content: center;
+  font-weight: 500;
+}
+
+.buttonRow{
+  padding: 10px 10px;
+}
+.buttonRow .blackBtn{
+  margin: 0px;
+}
+.recieptGridContainer .recieptRow .summaryTxt{
+  color: #a8a7a7;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0px;
+  margin: 4px;
+}
 
 @keyframes move {
   from {
