@@ -8,13 +8,20 @@ class NavBar extends Component {
       const ethereum = window.ethereum;
       console.log("ethereum",ethereum);
       const openMetaMask = async()=> {
-        const showAccount = document.querySelector('.modal');
+       
+        if (typeof window.ethereum !== 'undefined') {
+          console.log('MetaMask is installed!');
+          const showAccount = document.querySelector('.modal');
         ethereum.request({ method: 'eth_requestAccounts' });
          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-         const account = accounts[0];
+        //  const account = accounts[0];
+        //  showAccount.innerHTML = account;
+        } else if (typeof window.ethereum == 'undefined') {
+          alert('Cannot connect because MetaMask browser extension is not found')
+        }
         // const account = window.web3.eth.defaultAccount;
   
-         showAccount.innerHTML = account;
+         
        }
         return ( <div className="topnav maxWidth">
            
@@ -25,7 +32,7 @@ class NavBar extends Component {
         <div className="contentLinks">
         <Link to="/marketplace" className="active" href="#home">Marketplace</Link>
         <Link to="/about" href="#news">About</Link>
-        <Link to="/offsets" href="#contact">Offset</Link>
+        {/* <Link to="/offsets" href="#contact">Offset</Link> */}
         <button onClick= {openMetaMask} className="navBar blackBtn">
             Connect Wallet
         </button>

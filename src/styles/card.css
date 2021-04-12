@@ -538,6 +538,7 @@ font-size: 16px;
     flex-direction: column;
     position: absolute;
     right: 20px;
+    outline: none;
     
     /* left: 10%; */
   }
@@ -547,7 +548,9 @@ font-size: 16px;
     border: none; 
     background-color: transparent;
     font-size: 12;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: courier, Arial, Helvetica, sans-serif;
+    outline: none;
+
   }
   /* .inputContainer .arrowBtn {
     background-color: white;
@@ -565,6 +568,10 @@ font-size: 16px;
     padding: 8px 16px 8px 16px;
   }
 
+  .noPadding {
+    padding: 0px;
+    margin: 0px;
+  }
   /* ********** MODAL ********** */
 
 
@@ -576,6 +583,10 @@ font-size: 16px;
   max-width: 496px;
   z-index: 5;
   height: 800px;
+}
+
+.bidModal{
+  top: 12%;
 }
 .modal .arrowBtnFlex{
   z-index: 8;
