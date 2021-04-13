@@ -594,6 +594,10 @@ max-width: 91%;
 z-index: 2;
 }
 
+input[type=text]  {
+  font-size: 16px;
+}
+
 .inputContainer span{
   position: absolute;
   height: auto;
