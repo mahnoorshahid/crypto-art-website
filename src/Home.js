@@ -5,6 +5,10 @@ import CardRow from './components/cardRow'
 import {BrowserRouter as Router,Route,Switch, Link} from 'react-router-dom';
 import './index.css'
 
+const discover = "/imgs/discover.png";
+const buy = "./imgs/buy.png";
+const footprint = "/imgs/footprint.png";
+
 function Home() {
   return (
     <div className="App">
@@ -20,14 +24,9 @@ function Home() {
         Future {' '}  
         </span>
       </h1>
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
         <Link
           to ='/about'
           className="button"
-         // target="_blank"
-         // rel="noopener noreferrer"
         > 
           <div className="buttonText">
           Learn More
@@ -47,15 +46,17 @@ function Home() {
       </div>
         <div className="gridThree">
           <div className="block">
-            {/* <img src={} className=""/> */}
+            <img src={discover} className="commonIcon"/>
             <h2>Discover</h2>
             <p>Explore from the tons of unique digital tokens from our online marketplace. We curate tokens that range from AR assets to the coolest images. Being a digital artist has never been more popular.</p>
           </div>
           <div className="block">
+          <img src={buy} className="commonIcon"/>
             <h2>Buy & Sell</h2>
             <p>Found an artwork that speaks to you? Place a bid to purchase the offset. If you become an owner of a piece, you can resell when the item accumulates value.</p>
           </div>
           <div className="block">
+          <img src={footprint} className="commonIcon"/>
             <h2>Offset</h2>
             <p>Our platform offers a solution to mitigate carbon emission in NFT transactions. Each each purchase, buyers must buy a small about of Carbon Offsets which helps fund eco-friendly projects.</p>
           </div>

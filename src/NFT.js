@@ -8,11 +8,9 @@ import styles from "./styles/card.css"
 
 const options = {method: 'GET'};
 
-//const url = 'https://api.github.com/users';
-
 const url = 'https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20';
-//const url = 'https://api.opensea.io/api/v1/bundles?limit=2&offset=0';
-
+const up = "/imgs/up.svg";
+const down = "/imgs/down.svg";
 
 const NFT = () => {
         const id = useParams();
@@ -20,7 +18,6 @@ const NFT = () => {
         const [title, setTitle] = useState('default title');
         const [user, setUser] = useState('default User')
         const [count, setCount] = useState(1);
-        const [regexp, setRegexp] = useState("/^[0-9\b]+$/");
         const [bid, setBid] = useState(2);
         const [show, setShowModal] = useState(false);
         const [hide, setHideModal] = useState(true);
@@ -30,29 +27,21 @@ const NFT = () => {
 
         const getAssets = async() => {
          const response = await fetch(url);
-         const assets = await response.json();
-        const result = assets.assets;
-         const selectedNFTAbove = result.map((nft)=> nft.id);
-         const findNFTID = selectedNFTAbove.find((item) => item.id === parseInt(id));
-
-      console.log("assets", assets);
-      console.log("selectedNFTAbove",selectedNFTAbove );
-      ///wirjubg
-      console.log("resutl nft",result[0].id );
-          console.log("result nft2", selectedNFTAbove);
-          console.log("finding the id", findNFTID);
-          const selected = assets.assets[3];
+         const assets = await response.json().catch(err => {
+            err.text().then( errorMessage => {
+              alert("error");
+            })});
+         const selected = assets.assets[0];
 
          setAssets(selected);
           setTitle(selected.collection.name);
-          const isUsername= selected.creator.user ? selected.creator.user.username : null; 
-          setUser(isUsername);
+          const isUsername= selected.creator ? selected.creator.user : selected.owner.user.username; 
+        //   const isOwner = selected.owner.user? selected.owner.user
+          const checkUsername = isUsername ? selected.creator.user.username : selected.owner.user.username;
+          setUser(checkUsername);
           console.log("selected", selected);
         };
 
-        // const changeNum = () => {
-        //     setCount(count + 1)
-        // }
         const changeNum = (e) => {
             e.preventDefault();
             setCount(count + 1);
@@ -88,14 +77,18 @@ const NFT = () => {
     const hideFinalModal = (e) => {
         e.preventDefault();
         setShowFinalModal(false);
+        
         setHideModal(true);
         setHideFinalModal(true);
     }
 
-
-    //    let change = (e) => {
-    //        value = e.target.value;
-    //    }
+    const bidAgain = (e) => {
+        setShowFinalModal(false);
+        
+        setHideModal(false);
+        setHideFinalModal(true);
+        setShowModal(true);
+    }
 
        if (typeof window.ethereum !== 'undefined') {
         console.log('MetaMask is installed!');
@@ -126,7 +119,6 @@ const NFT = () => {
                     <div>
                     <p className="smallText allCaps">owner</p>
                     <p className="username">
-                {/* @{assets && assets.owner && assets.owner.user && assets.owner.user.username} */}
                 @{user}
                 </p>
                 </div>
@@ -135,7 +127,7 @@ const NFT = () => {
                 <div className="flexCommonPrice">
                     <div>
                         <p className="smallText allCaps">Asking Price</p>
-                        <p className="price">0.3 Eth</p>
+                        <p className="price">5 Eth</p>
                         <p className="">$539</p>
                      </div>
                      <div className="left">
@@ -181,10 +173,10 @@ const NFT = () => {
                             /> 
                             <div className="arrowBtnFlex">
                             <button onClick={changeNum} className="whiteBtn arrowBtn">
-                                  &uarr;
+                                  <img src={up} className="upArrow"/>
                             </button>
                             <button onClick={decreaseNum} className="whiteBtn arrowBtn">
-                                 &darr;
+                            <img src={down} className="upArrow"/>
                             </button>
                             </div>
                             <span>
@@ -193,11 +185,6 @@ const NFT = () => {
                             </div>
                      </div>
                     <div className="cardBorderPadding lessPadding">
-                    {/* <Link to="/about" target="_blank">
-                        <p className="commonTxtPadding">
-                        What are carbon offsets? <span>&rarr;</span>
-                        </p>
-                    </Link> */}
                     </div>
                      
                      <div className="recieptGridContainer">
@@ -255,33 +242,26 @@ const NFT = () => {
                             />  
                             <div className="arrowBtnFlex">
                             <button onClick={changeNum} className="whiteBtn arrowBtn">
-                                  &uarr;
+                            <img src={up} className="upArrow"/>
                             </button>
                             <button onClick={decreaseNum} className="whiteBtn arrowBtn">
-                                 &darr;
+                            <img src={down} className="upArrow"/>
                             </button>
                             </div>
-                            {/* {count} */}
-                            {/* <button onClick= {showModal} className="whiteBtn">
-                                offs
-                            </button> */}
                             </div>
                         </div>
                     </form>
                        <button onClick= {showModal} className="blackBtn">
                            Place a bid
                      </button>
-                     {/* <button onClick= {openMetaMask} className="blackBtn">
-                                connect wallet
-                     </button> */}
-                    <Link to="/about" target="_blank">
+     
+                    <Link to="/about">
                         <p className="commonTxtPadding">
                         How Carbon Offsets work <span>&rarr;</span>
                         </p>
                     </Link>
                         
                 </article>
-                {/* <OffsetCard show={show}/> */}
             </div>
            </div>
 
@@ -291,7 +271,7 @@ const NFT = () => {
              
                   <div className="eventCardShadowInput modalInputContainer">
                   <div className="">
-                         <p className="smallText noPadding">Your Bid</p>
+                         {/* <p className="smallText noPadding">Your Bid</p> */}
                    </div>
                       <h1>
                       {title}
@@ -309,54 +289,45 @@ const NFT = () => {
                 }
                 <div className="flexCommonPrice">
                     <div>
-                        <p className="smallText allCaps">Your Bid</p>
+                        <p className="smallText commonHeading">Your Bid</p>
                         <h2 className="noPadding"> {bid + (count * 0.006 )} ETH</h2>
                         {/* <p className="price"> {bid + (count * 0.006 )} ETH</p> */}
                        
-                        <p className="smallText allCaps">You're Winning!</p>
+                        <p className="smallText  winning">You're Winning!</p>
                      </div>
                      <div className="left">
-                        <p className="ecoPrice smallText allCaps">Your Offsets</p>
+                        <p className="ecoPrice smallText commonHeading">Your Offsets</p>
                         <p className="price"> {count} OFF</p>
+                        <p className="smallText">Will offset {count} tonnes of carbon emissions equivalent</p>
                      </div>
                 </div>
-                   <p>
-                   Bids with the highest price and highest Carbon Offset Credits will win.
-                    </p>
-                    <div className="inputContainer">
-                        <p className="commonTxtPadding carbonOffset">
-                            Auction ends in: 2 days
+                        <p className="smallText allCaps">
+                        Auction Ends:
                         </p>
-                            <label className="commonTxtPadding carbonOffset" htmlFor="carbonOffset">Your Bidding Amount</label>
-                     </div>
-
-                    <div className="cardBorderPadding lessPadding">
-                    </div>
-                     
+                        <p className="carbonOffset noPadding smallText commonHeading mdText">
+                            2 days
+                        </p>
+                       
                      <div className="recieptGridContainer">
-                         <div className="recieptRow">
-                             <p className="summaryTxt">
-                                 Your Balance</p>
-                             <p className="summaryTxt">
-                                 12.00 ETH
-                             </p>
-                         </div>
-                         <div className="recieptRow">
-                             <p className="summaryTxt">
-                                 Total</p>
-                             <p className="summaryTxt">
-                                {bid + (count * 0.006 )} ETH
-                             </p>
-                         </div>
-                     </div>
+                     <p className="commonHeading greyText smallText noPadding">
+                         Bids with the highest price and highest Carbon Offset Credits will win.
+                    </p>
+                    </div>
                      <div className="buttonRow recieptRow">
-                     <button className="whiteBtn" onClick = {hideFinalModal}>
-                      View Artwork
+                     <Link to="/marketplace" target="_blank" className="whiteBtn whiteBtnContainer">
+                     <button className="whiteBtn">
+                      Go to Marketplace
                      </button>
-                     <button  className="blackBtn" onClick = {hideFinalModal}>
-                      Claim Artwork
+                     </Link>
+                     <button  className="blackBtn" onClick = {bidAgain}>
+                      Bid Again
                      </button>
                      </div>
+                     <Link to="/about" target="_blank">
+                        <p className="commonTxtPadding carbonOffsetLink">
+                        How Carbon Offsets work <span>&rarr;</span>
+                        </p>
+                    </Link>
                  </div>
                 </div>
              </div>
@@ -376,22 +347,7 @@ const NFT = () => {
            </p>
           }
     </div>
-         
-            {/* {assets  && assets.length > 0 && assets.map((item)=>{
-                console.log("item", item);
-                
-                  const { image_preview_url, collection, token_id, id, top_bid} = item;
-                    
-                    return <div>
-                        <h1> array
-                            {item.collection.name}
-                            param id
-                            {id}
-                        </h1>
-                        </div>
-                })} */}
-     
-            
+               
          </div>
         </>
         )
